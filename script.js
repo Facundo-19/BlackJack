@@ -1,11 +1,20 @@
+let jugador = {
+    nombre: "",
+    apuesta: 0
+}
 let cartas = [];
 let suma = 0;
 let tieneBlackjack = false;
 let sigueVivo = false;
 let mensaje = "";
-let mensajeEl = document.getElementById("mensaje-el");
-let sumaEl = document.getElementById("suma-el");
-let cartasEl = document.getElementById("cartas-el");
+let mensajeEl = document.querySelector("#mensaje-el");
+let sumaEl = document.querySelector("#suma-el");
+let cartasEl = document.querySelector("#cartas-el");
+let jugadorEl = document.querySelector("#jugador-el")
+
+jugador.nombre = prompt("Cual es tu nombre?");
+jugador.apuesta = prompt("Cuanto dinero quieres apostar?");
+jugadorEl.textContent = `${jugador.nombre}: $${jugador.apuesta}`
 
 function obtenerCartaAleatoria() {
     let cartaAleatoria = Math.floor( Math.random() * 13) + 1;
@@ -36,7 +45,7 @@ function renderizarJuego() {
     if (suma < 21) {
         mensaje = "Queres otra carta?";
     } else if (suma === 21) {
-        mensaje = "Felicitaciones! Tenes Blakjack";
+        mensaje = "Felicitaciones! Tenes Blackjack";
         tieneBlackjack = true;
     } else {
         mensaje = "Perdiste :(";
